@@ -1,0 +1,17 @@
+CREATING AN EC2 INSTANCE IN AWS 
+
+sudo su
+
+yum install -y httpd 
+yum install -y git
+
+systemctl start httpd
+systemctl enable httpd
+
+cd /tmp
+
+git clone https://github.com/AbhilashSivaraman/MyWebsite.git
+
+cp /tmp/MyWebsite/* /var/www/html/
+
+systemctl restart httpd
