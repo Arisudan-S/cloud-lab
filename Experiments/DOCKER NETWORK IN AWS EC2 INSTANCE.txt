@@ -1,0 +1,36 @@
+DOCKER NETWORK IN AWS EC2 INSTANCE
+
+sudo su
+
+yum install -y docker
+
+systemctl start docker
+systemctl enable docker
+
+docker network create my_bridge_network
+
+docker run -d --name ubuntu1 --network my_bridge_network ubuntu sleep infinity
+
+docker run -d --name ubuntu2 --network my_bridge_network ubuntu sleep infinity
+
+docker network inspect my_bridge_network
+
+docker exec -it ubuntu1 ping ubuntu2
+
+IF THE PING IS NOT WORKING:
+
+FOR UBUNTU1:
+
+docker exec -it ubuntu1 bash
+
+apt-get update
+
+apt-get install iputils-ping -y
+
+FOR UBUNTU2:
+
+docker exec -it ubuntu2 bash
+
+apt-get update
+
+apt-get install iputils-ping -y

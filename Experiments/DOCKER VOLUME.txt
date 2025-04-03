@@ -1,0 +1,15 @@
+DOCKER VOLUME:
+
+sudo su
+
+yum install -y docker
+
+systemctl start docker
+systemctl enable docker
+
+docker volume create volumename
+
+docker volume ls
+
+docker run -d --name ubuntu1 -v volumename :/app nginx
+
